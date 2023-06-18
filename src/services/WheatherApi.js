@@ -1,16 +1,22 @@
 /** @format */
 import axios from "axios";
-const apiKey = import.meta.process.VITE_openweather_API_KEY;
+const apiKey = import.meta.env.VITE_openweather_API_KEY;
 
-const getLocationByInput = () => {
-  return axios.get(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city.name},${state.code},${country.code}&limit=10&appid=${apiKey}`
+let cityName = "london";
+let stateCode = "0";
+let countryCode = "";
+let lat = "33.44";
+let lon = "94.04";
+
+const getLocationByInput = async () => {
+  return await axios.get(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName},${stateCode},${countryCode}&limit=10&appid=${apiKey}`
   );
 };
 
-const getWhetherData = () => {
-  return axios.get(
-    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&&appid=${apiKey}`
+const getWhetherData = async () => {
+  return await axios.get(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
   );
 };
 
