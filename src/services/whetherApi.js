@@ -3,9 +3,7 @@
 import axios from "axios";
 
 const getCoordinatesByLocation = async (location) => {
-  const url = `https://api.open-meteo.com/v1/geocode?location=${encodeURIComponent(
-    location
-  )}&limit=1`;
+  const url = `https://api.open-meteo.com/v1/geocode?location=${location}&limit=1`;
 
   try {
     const response = await axios.get(url);
